@@ -1,0 +1,25 @@
+{
+  "name": "@arque/core",
+  "version": "0.1.0",
+  "description": "arque core package",
+  "author": "Roger Madjos <rrmadjos@protonmail.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "src/lib/lib.ts",
+  "directories": {
+    "src": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "node ./__tests__/core.test.js"
+  },
+  "keywords": [
+    "event",
+    "event-sourcing",
+    "cqrs",
+    "microservices"
+  ]
+}
