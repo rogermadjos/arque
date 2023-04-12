@@ -28,7 +28,8 @@ export type CommandHandler<
       },
       state: TState;
     },
-    command: TCommand
+    command: TCommand,
+    ...args: TCommand['args']
   ):
     | GeneratedEvent<TEvent>
     | GeneratedEvent<TEvent>[]

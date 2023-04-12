@@ -196,10 +196,10 @@ export class Aggregate<
               id: this.id,
               version: this.version,
             },
-            
             state: this.state,
           },
-          command
+          command,
+          ...command.args,
         );
 
         const events = (_events instanceof Array ? _events : [_events]).map((item, index) => ({

@@ -14,7 +14,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "node ./__tests__/core.test.js"
+    "test": "jest"
   },
   "keywords": [
     "event",
