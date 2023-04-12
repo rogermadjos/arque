@@ -1,6 +1,6 @@
 import { randomBytes } from 'crypto';
 import R from 'ramda';
-import { Event } from './event';
+import { Event, EventHandler } from './event';
 import { EventId } from './event-id';
 import { Aggregate } from './aggregate';
 import { Command } from './command';
@@ -13,15 +13,17 @@ enum EventType {
 
 type BalanceUpdatedEvent = Event<
   EventType.BalanceUpdated,
-  { amount: number }
+  { balance: number; amount: number }
 >;
 
+type State = { balance: number };
+
 describe('Aggregate#reload', () => {
-  const handler = {
+  const handler: EventHandler<BalanceUpdatedEvent, State> = {
     type: EventType.BalanceUpdated,
-    handle(ctx, event: BalanceUpdatedEvent) {  
+    handle(_, event: BalanceUpdatedEvent) {
       return {
-        balance: ctx.state.balance + event.body.amount,
+        balance: event.body.balance,
       };
     },
   };
@@ -37,7 +39,7 @@ describe('Aggregate#reload', () => {
         id,
         version: index + 1,
       },
-      body: { amount },
+      body: { balance: (index + 1) * amount, amount },
       meta: {},
       timestamp,
     }), 10);
@@ -47,7 +49,7 @@ describe('Aggregate#reload', () => {
       getLatestSnapshot: jest.fn().mockResolvedValue(null),
     };
 
-    const aggregate = new Aggregate<Command<number, number[]>, BalanceUpdatedEvent, { balance: number }>(
+    const aggregate = new Aggregate<Command<number, number[]>, BalanceUpdatedEvent, State>(
       EventStoreMock as never as EventStore,
       [],
       [handler],
@@ -89,7 +91,7 @@ describe('Aggregate#reload', () => {
             id: id.buffer,
             version: offset + index + 1,
           },
-          body: { amount },
+          body: { balance: (offset + index + 1) * amount, amount },
           meta: {},
           timestamp,
         }),
@@ -134,7 +136,7 @@ describe('Aggregate#reload', () => {
         id,
         version: 10 + index + 1,
       },
-      body: { amount },
+      body: { balance: 1000 + (index + 1) * amount, amount },
       meta: {},
       timestamp,
     }), 10);
