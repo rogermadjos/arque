@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Snapshot } from './types';
-import { Event } from './event';
+import { Event } from './types';
 
 export class InvalidAggregateVersionError extends Error {
   constructor(id: Buffer, version: number) {

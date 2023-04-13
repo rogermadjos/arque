@@ -1,9 +1,8 @@
 import { randomBytes } from 'crypto';
 import R from 'ramda';
-import { Event, EventHandler } from './event';
+import { Event, EventHandler, Command } from './types';
 import { EventId } from './event-id';
 import { Aggregate } from './aggregate';
-import { Command } from './command';
 import { EventStore } from './event-store';
 import { arrayToAsyncIterableIterator } from './util';
 

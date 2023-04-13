@@ -1,7 +1,6 @@
 import { Mutex } from 'async-mutex';
 import assert from 'assert';
-import { Command, CommandHandler } from './command';
-import { Event, EventHandler } from './event';
+import { Event, EventHandler, Command, CommandHandler } from './types';
 import { EventStore } from './event-store';
 import { backOff } from 'exponential-backoff';
 import { EventId } from './event-id';
