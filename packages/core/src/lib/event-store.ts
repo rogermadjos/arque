@@ -2,6 +2,14 @@
 import { Snapshot } from './types';
 import { Event } from './event';
 
+export class InvalidAggregateVersionError extends Error {
+  constructor(id: Buffer, version: number) {
+    super(
+      `invalid aggregate version: id=${id.toString('hex')} version=${version}`
+    );
+  }
+}
+
 export class EventStore {
   public async saveSnapshot(params: {
     aggregate: {

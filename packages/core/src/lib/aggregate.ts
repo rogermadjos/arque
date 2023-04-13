@@ -31,6 +31,8 @@ export class Aggregate<
 
   private eventHandlers: Map<number, EventHandler<Event, TState>>;
 
+  private lastReloadTimestamp: Date | null = null;
+
   constructor(
     private readonly eventStore: EventStore,
     commandHandlers: CommandHandler<TCommand, TEvent, TState>[],
@@ -138,6 +140,8 @@ export class Aggregate<
       ignoreSnapshot?: true,
     },
   ) {
+    const timestamp = new Date();
+
     if (!opts?.ignoreSnapshot) {
       const snapshot = await this.eventStore.getLatestSnapshot<TState>({
         aggregate: {
@@ -160,6 +164,8 @@ export class Aggregate<
     }), {
       disableSnapshot: true,
     });
+
+    this.lastReloadTimestamp = timestamp;
   }
 
   public async reload(opts?: {
@@ -177,6 +183,7 @@ export class Aggregate<
   public async process(command: TCommand, opts?: {
     noInitialReload?: true,
     ignoreSnapshot?: true,
+    maxRetries?: number,
   }): Promise<void> {
     await backOff(async () => {
       const release = await this.mutex.acquire();
@@ -235,8 +242,8 @@ export class Aggregate<
       delayFirstAttempt: false,
       jitter: 'full',
       maxDelay: 2000,
-      numOfAttempts: 5,
-      startingDelay: 200,
+      numOfAttempts: opts?.maxRetries || 10,
+      startingDelay: 100,
       timeMultiple: 2,
     });
   }
