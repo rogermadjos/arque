@@ -1,5 +1,5 @@
 export default {
-  displayName: '@arque/core',
+  displayName: '@arque/mongoose-event-store-storage-adapter',
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {

@@ -17,5 +17,8 @@
     "types": ["node"],
     "paths": {}
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "paths": {
+    "@arque/core": ["packages/core/src/index.ts"]
+  }
 }

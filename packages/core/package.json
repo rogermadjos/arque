@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "description": "arque core package",
   "author": "Roger Madjos <rrmadjos@protonmail.com>",
-  "homepage": "",
-  "license": "ISC",
-  "main": "src/lib.ts",
+  "homepage": "https://github.com/rogermadjos/arque#README.md",
+  "license": "MIT",
+  "main": "dist/index.js",
   "directories": {
     "src": "src",
     "test": "__tests__"
