@@ -1,0 +1,21 @@
+{
+  "name": "@arque/core",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/core/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "main": "packages/core/src/index.ts",
+        "outputPath": "packages/core/dist",
+        "tsConfig": "packages/core/tsconfig.lib.json",
+        "rootDir": "packages/core/src",
+        "assets": [],
+        "updateBuildableProjectPackageJsonDependencies": true
+      }
+    }
+  },
+  "tags": []
+}

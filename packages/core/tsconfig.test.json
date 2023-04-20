@@ -8,5 +8,6 @@
     "src/**/*.test.ts",
     "src/**/*.d.ts",
     "__tests__/**/*.test.ts",
-  ]
+  ],
+  "composite": true
 }

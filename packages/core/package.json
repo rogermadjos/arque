@@ -1,25 +1,25 @@
 {
   "name": "@arque/core",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.0",
   "description": "arque core package",
   "author": "Roger Madjos <rrmadjos@protonmail.com>",
   "homepage": "https://github.com/rogermadjos/arque#README.md",
   "license": "MIT",
-  "main": "dist/index.js",
-  "directories": {
-    "src": "src",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "nx run build"
   },
   "keywords": [
     "event",
     "event-sourcing",
     "cqrs",
     "microservices"
-  ]
+  ],
+  "main": "index.js",
+  "types": "index.d.ts",
+  "dependencies": {
+    "async-mutex": "0.4.0",
+    "bs58": "5.0.0",
+    "exponential-backoff": "3.1.1"
+  }
 }

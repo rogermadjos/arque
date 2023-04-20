@@ -1,8 +1,8 @@
 import { Mutex } from 'async-mutex';
+import { backOff } from 'exponential-backoff';
 import assert from 'assert';
 import { Event, EventHandler, Command, CommandHandler } from './types';
 import { EventStore } from './event-store';
-import { backOff } from 'exponential-backoff';
 import { EventId } from './event-id';
 
 export type SnapshotOpts<TState = unknown> = {
