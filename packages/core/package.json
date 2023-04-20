@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "build": "nx run build"
+    "build": "nx run build",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "event",
@@ -21,5 +22,9 @@
     "async-mutex": "0.4.0",
     "bs58": "5.0.0",
     "exponential-backoff": "3.1.1"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "3cc947f13b6dbcad08cd231afe684532eeaf87a6"
 }
