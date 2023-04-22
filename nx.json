@@ -6,7 +6,8 @@
       "options": {
         "cacheableOperations": [
           "build",
-          "test"
+          "test",
+          "prepublishOnly"
         ],
         "accessToken": "MWQwMjBiNzctNjM1Yy00OWM2LWJjYjMtMTNiOWNiNDRmNjg1fHJlYWQtd3JpdGU="
       }

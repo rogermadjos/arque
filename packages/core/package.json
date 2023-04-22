@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "build": "nx run build",
+    "build": "nx build",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -16,8 +16,12 @@
     "cqrs",
     "microservices"
   ],
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/**/*.js.map"
+  ],
   "dependencies": {
     "async-mutex": "0.4.0",
     "bs58": "5.0.0",
@@ -26,5 +30,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "3cc947f13b6dbcad08cd231afe684532eeaf87a6"
+  "gitHead": "acf70c4477da9029158e0a344fea3d9f0bad29d1"
 }

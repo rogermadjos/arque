@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import R from 'ramda';
 import { Event, Snapshot } from './types';
 
 export interface EventStoreStreamReceiver {
@@ -44,6 +43,8 @@ export interface EventStoreStorageAdapter {
       version: number;
     };
   }): Promise<Snapshot<TState> | null>;
+
+  registerStream(params: { event: number; stream: string; }): Promise<void>;
 }
 
 export interface EventStoreConfigurationStorageAdapter {
@@ -97,17 +98,14 @@ export class EventStore {
     timestamp: Date;
     events: Pick<Event, 'id' | 'type' | 'body' | 'meta'>[];
   }) {
-    const events: Event[] = R.addIndex<Pick<Event, 'id' | 'type' | 'body' | 'meta'>>(R.map)(
-      (item, index) => ({
-        ...item,
-        aggregate: {
-          id: params.aggregate.id,
-          version: params.aggregate.version + index,
-        },
-        timestamp: params.timestamp,
-      }),
-      params.events
-    );
+    const events: Event[] = params.events.map((item, index) => ({
+      ...item,
+      aggregate: {
+        id: params.aggregate.id,
+        version: params.aggregate.version + index,
+      },
+      timestamp: params.timestamp,
+    }));
 
     const streamAdapterSendEventsData = await Promise.all(events.map(async (event) => {
       const streams = await this.configurationStorageAdapter.listStreams({ event: event.type });
