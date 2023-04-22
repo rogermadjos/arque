@@ -1,6 +1,5 @@
 {
   "name": "arque",
-  "version": "0.1.0",
   "description": "The Event Sourcing library.",
   "scripts": {
     "test": "lerna run test"
