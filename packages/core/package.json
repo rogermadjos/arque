@@ -17,6 +17,10 @@
     "url": "https://github.com/rogermadjos/arque/issues"
   },
   "scripts": {
-    "build": "rimraf dist && tsc --project tsconfig.build.json"
+    "build": "rimraf dist && tsc --project tsconfig.build.json",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
