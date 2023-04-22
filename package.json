@@ -1,7 +1,7 @@
 {
   "name": "arque",
-  "version": "0.0.1",
-  "description": "The library for Event Sourcing.",
+  "version": "0.1.0",
+  "description": "The Event Sourcing library.",
   "scripts": {
     "test": "lerna run test"
   },
@@ -21,22 +21,23 @@
     "lerna": "^6.6.1",
     "nx": "^15.9.2",
     "ramda": "^0.29.0",
+    "rimraf": "^5.0.0",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   },
-  "workspaces": [
-    "packages/core"
-  ],
-  "keywords": [
-    "event",
-    "event-sourcing",
-    "cqrs",
-    "microservices"
-  ],
   "dependencies": {
     "async-mutex": "0.4.0",
     "bs58": "5.0.0",
     "exponential-backoff": "3.1.1"
-  }
+  },
+  "keywords": [
+    "microservices",
+    "event-sourcing",
+    "cqrs",
+    "event"
+  ],
+  "workspaces": [
+    "packages/*"
+  ]
 }

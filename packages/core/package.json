@@ -1,34 +1,22 @@
 {
   "name": "@arque/core",
   "version": "0.1.0-alpha.4",
-  "description": "arque core package",
-  "author": "Roger Madjos <rrmadjos@protonmail.com>",
-  "homepage": "https://github.com/rogermadjos/arque#README.md",
+  "description": "The Event Sourcing library.",
+  "author": "rogermadjos <roger@hov.co>",
+  "homepage": "https://github.com/rogermadjos/arque#readme",
   "license": "MIT",
-  "scripts": {
-    "test": "jest",
-    "build": "nx build",
-    "prepublishOnly": "npm run build"
-  },
-  "keywords": [
-    "event",
-    "event-sourcing",
-    "cqrs",
-    "microservices"
-  ],
   "main": "dist/index.js",
   "files": [
-    "dist/**/*.js",
-    "dist/**/*.d.ts",
-    "dist/**/*.js.map"
+    "dist"
   ],
-  "dependencies": {
-    "async-mutex": "0.4.0",
-    "bs58": "5.0.0",
-    "exponential-backoff": "3.1.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogermadjos/arque.git"
   },
-  "publishConfig": {
-    "access": "public"
+  "bugs": {
+    "url": "https://github.com/rogermadjos/arque/issues"
   },
-  "gitHead": "d5269b1a8726bd75fb697b18ea0770066e008851"
+  "scripts": {
+    "build": "rimraf dist && tsc --project tsconfig.build.json"
+  }
 }
